@@ -60,7 +60,7 @@ def voc2yolo(xml_files_path, save_txt_files_path, classes, is_save_cur_path = 1,
             xmlfile = xml_file.rsplit(os.sep, maxsplit=1)[-1]
             txt_path = os.path.join(save_txt_files_path, xmlfile.rsplit('.', maxsplit=1)[0] + '.txt')
 
-        print(txt_path)
+        # print(txt_path)
         txt_file = open(txt_path, 'w', encoding="utf-8")
 
         tree = ET.parse(xml_file)
