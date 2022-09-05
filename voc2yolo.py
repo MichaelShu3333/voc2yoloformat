@@ -99,6 +99,10 @@ if __name__ == "__main__":
     # classes
     classes = ['hat', 'person']
 
+    if len(classes) == 0:
+        print('There is no one classification')
+        exit(0)
+
     # voc format xml label files' path
     xml_files_path = r'C:\Users\boe\Desktop\voc_tests'
 
@@ -111,4 +115,19 @@ if __name__ == "__main__":
     # whether or not ignore to difficult recognize object
     ignore_difficult = 0
 
+    # generate classes txt file
+    class_path = 'classes.txt'
+    if is_save_cur_path :
+        class_path = os.path.join(xml_files_path, class_path)
+    else :
+        class_path = os.path.join(save_txt_path, class_path)
+
+    class_file = open(class_path, 'w', encoding="utf-8")
+
+    strClasses = ''
+    for cls in classes:
+        strClasses += cls + '\n'
+
+    class_file.write(strClasses)
+    
     voc2yolo(xml_files_path, save_txt_path, classes, is_save_cur_path, ignore_difficult)
