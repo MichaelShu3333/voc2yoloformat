@@ -40,7 +40,7 @@ def getALlFiles(filepath, files_list):
         else :
             files_list.append(file)
 
-def convert_annotation(xml_files_path, save_txt_files_path, classes, is_save_cur_path = 1, ignore_difficult = 0):
+def voc2yolo(xml_files_path, save_txt_files_path, classes, is_save_cur_path = 1, ignore_difficult = 0):
     xml_files = []
     getALlFiles(xml_files_path, xml_files)
     #for file in xml_files:
@@ -111,4 +111,4 @@ if __name__ == "__main__":
     # whether or not ignore to difficult recognize object
     ignore_difficult = 0
 
-    convert_annotation(xml_files_path, save_txt_path, classes, is_save_cur_path, ignore_difficult)
+    voc2yolo(xml_files_path, save_txt_path, classes, is_save_cur_path, ignore_difficult)
