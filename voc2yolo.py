@@ -71,7 +71,10 @@ def voc2yolo(xml_files_path, save_txt_files_path, classes, is_save_cur_path = 1,
         h = int(size.find('height').text)
         
         for obj in root.iter('object'):
-            difficult = obj.find('difficult').text
+            difficult = obj.find('difficult')
+            if difficult:
+                difficult = difficult.text
+
             cls = obj.find('name').text
 
             # voc foramat difficult = 1 stand for difficult to recognize and ignore
