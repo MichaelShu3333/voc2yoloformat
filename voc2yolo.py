@@ -125,9 +125,6 @@ if __name__ == "__main__":
     class_file = open(class_path, 'w', encoding="utf-8")
 
     strClasses = ''
-    for cls in classes:
-        strClasses += cls + '\n'
+    class_file.write(strClasses.join([str(cls) + '\n' for cls in classes]))
 
-    class_file.write(strClasses)
-    
     voc2yolo(xml_files_path, save_txt_path, classes, is_save_cur_path, ignore_difficult)
