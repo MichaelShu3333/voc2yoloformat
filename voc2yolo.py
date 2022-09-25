@@ -69,7 +69,10 @@ def voc2yolo(xml_files_path, save_txt_files_path, classes, is_save_cur_path = 1,
         size = root.find('size')
         w = int(size.find('width').text)
         h = int(size.find('height').text)
-        
+        if w == 0 or h == 0:
+            print("[wxh:%sx%s]:%s"%(size.find('width').text, size.find('height').text, txt_path))
+            continue
+
         for obj in root.iter('object'):
             difficult = obj.find('difficult')
             if difficult:
