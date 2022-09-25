@@ -49,12 +49,16 @@ def shuffle(image_path, label_path, image_suffix, num, valid_images_path, valid_
         #print(image)
         # image = valid_label_path + os.sep + image.rsplit(os.sep, maxsplit=1)[-1].rsplit('.', maxsplit=1)[-2] + '.' + label_suffix
         label = label_path + os.sep + image.rsplit(os.sep, maxsplit=1)[-1].rsplit('.', maxsplit=1)[-2] + '.' + label_suffix
-        #print(image)
-        #print(label)
-        i +=1
-        if 0 == i % num :
-            print("i = %d"%i)
-            shutil.move(image, valid_images_path)
-            shutil.move(label, valid_label_path)
+        if os.path.exists(label):
+            #print(image)
+            #print(label)
+            i +=1
+            if 0 == i % num :
+                #print("i = %d"%i)
+                shutil.move(image, valid_images_path)
+                shutil.move(label, valid_label_path)
+        else :
+            os.remove(image)
+            print("label file is not exist:%s" % label)
 
 shuffle(images_path, labels_path, image_suffix, num, valid_images_path, valid_label_path, label_suffix)
