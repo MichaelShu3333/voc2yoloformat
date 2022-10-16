@@ -2,7 +2,7 @@ import os
 import shutil
 
 valid_images_path = 'valid_images'
-valid_label_path = 'valid_label'
+valid_label_path = 'valid_labels'
 images_path = 'images'
 labels_path = 'labels'
 image_suffix = 'jpg'
