@@ -1,10 +1,10 @@
 import os
 import shutil
 
-valid_images_path = 'valid_images'
-valid_label_path = 'valid_labels'
-images_path = 'images'
-labels_path = 'labels'
+valid_images_path = r'valid_images'
+valid_label_path = r'valid_labels'
+images_path = r'images'
+labels_path = r'labels'
 image_suffix = 'jpg'
 label_suffix = 'txt'
 num = 10
@@ -38,6 +38,12 @@ def shuffle(image_path, label_path, image_suffix, num, valid_images_path, valid_
     getALlSuffixFiles(image_path, images, image_suffix)
     getALlSuffixFiles(labels_path, labels, label_suffix)
     print(len(images))
+
+    if (False == os.path.exists(valid_images_path)) or (False == os.path.isdir(valid_images_path)):
+        os.mkdir(valid_images_path)
+
+    if (False == os.path.exists(valid_label_path)) or (False == os.path.isdir(valid_label_path)):
+        os.mkdir(valid_label_path)
 
     valid_images_path += os.sep
     valid_label_path += os.sep
